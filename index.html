@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Happy Birthday Broo 💖</title>
   <style>
     body {
@@ -113,32 +113,43 @@
   <div class="message" id="wishMessage">
     <p>
       Dear Brooo,<br><br>
-      On your special day, I just want to say how lucky I am to have you as my Brother.
-      Your love, your care, and your support mean the world to me. 💖<br><br>
-      Wishing you happiness, health, laughter, and endless love. May all your dreams come true!<br><br>
-      Once again, Happy Birthday brooo 😘<br><br>
-      — Your Machi 💫
+      On your special day, <br><br>I just want to say how lucky I am to have you as my Brother.<br><br>
+      May this year bring you more success, love, and unlimited happiness! 💖<br><br>
+      Nee dream pannra ella vishayangalum one by one achieve aagattum 💕🎯<br><br>
+      Un future full-a light-a irukkanum like your smile da 😎<br><br>
+      Once again, Happy Birthday brooo 💖💖..<br><br>
     </p>
   </div>
 
+  <!-- ✅ Working Background Music -->
+  <!-- ✅ Inspiring Cinematic Music -->
+
+
+
   <script>
-  function showWish() {
-    document.getElementById("wishMessage").style.display = "block";
-  }
+    function showWish() {
+      document.getElementById("wishMessage").style.display = "block";
+    }
 
-  // Floating hearts animation
-  for (let i = 0; i < 30; i++) {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.style.left = `${Math.random() * 100}%`;
-    heart.style.bottom = "-50px";
-    heart.style.setProperty('--i', Math.random());
-    heart.style.animationDuration = `${5 + Math.random() * 5}s`;
-    heart.style.opacity = Math.random();
-    document.body.appendChild(heart);
-  }
-</script>
+    for (let i = 0; i < 30; i++) {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.style.left = ${Math.random() * 100}%;
+      heart.style.bottom = "-50px";
+      heart.style.setProperty('--i', Math.random());
+      heart.style.animationDuration = ${5 + Math.random() * 5}s;
+      heart.style.opacity = Math.random();
+      document.body.appendChild(heart);
+    }
 
+    // For browsers that block autoplay
+    window.addEventListener('click', function () {
+      const bgm = document.getElementById('bgm');
+      if (bgm.paused) {
+        bgm.play().catch(e => console.log("Autoplay blocked:", e));
+      }
+    });
+  </script>
 
 </body>
 </html>
