@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Happy Birthday Akka 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Broo 💖</title>
   <style>
     body {
       margin: 0;
@@ -11,20 +12,13 @@
       font-family: 'Segoe UI', sans-serif;
       text-align: center;
       color: #c2185b;
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
     h1 {
-      font-size: 60px;
+      font-size: 2.5em;
       margin-top: 50px;
       animation: pop 1s ease-in-out infinite alternate;
-    }
-
-    p {
-      font-size: 24px;
-      max-width: 700px;
-      margin: 20px auto;
-      line-height: 1.6;
     }
 
     @keyframes pop {
@@ -32,16 +26,22 @@
       to { transform: scale(1.05); }
     }
 
+    p {
+      font-size: 1.1em;
+      line-height: 1.6;
+      margin: 10px 20px;
+    }
+
     button {
-      margin-top: 40px;
-      padding: 15px 30px;
-      font-size: 20px;
+      margin-top: 30px;
+      padding: 15px 25px;
+      font-size: 1.1em;
       background-color: #fff;
       color: #d81b60;
       border: none;
       border-radius: 10px;
       cursor: pointer;
-      transition: 0.3s;
+      transition: background-color 0.3s;
     }
 
     button:hover {
@@ -50,17 +50,19 @@
 
     .message {
       display: none;
-      margin-top: 30px;
-      font-size: 22px;
+      margin: 30px auto;
+      font-size: 1.1em;
       background-color: rgba(255, 255, 255, 0.3);
-      padding: 20px;
+      padding: 25px;
       border-radius: 15px;
+      max-width: 90%;
+      box-shadow: 0 0 15px rgba(255, 105, 180, 0.3);
     }
 
     .heart {
       position: absolute;
-      width: 20px;
-      height: 20px;
+      width: 15px;
+      height: 15px;
       background: red;
       transform: rotate(45deg);
       animation: float 10s linear infinite;
@@ -70,19 +72,19 @@
     .heart::after {
       content: '';
       position: absolute;
-      width: 20px;
-      height: 20px;
+      width: 15px;
+      height: 15px;
       background: red;
       border-radius: 50%;
     }
 
     .heart::before {
-      top: -10px;
+      top: -7px;
       left: 0;
     }
 
     .heart::after {
-      left: -10px;
+      left: -7px;
       top: 0;
     }
 
@@ -104,22 +106,39 @@
 </head>
 <body>
 
-  <h1>🎂 Happy Birthday Broo!💕</h1>
+  <h1>🎂 Happy Birthday Brooo! 💕</h1>
 
   <button onclick="showWish()">Click for My Wish 💌</button>
 
   <div class="message" id="wishMessage">
     <p>
-      Dear Broo,<br><br>
+      Dear Brooo,<br><br>
       On your special day, I just want to say how lucky I am to have you as my Brother.
       Your love, your care, and your support mean the world to me. 💖<br><br>
       Wishing you happiness, health, laughter, and endless love. May all your dreams come true!<br><br>
-      once again Wishing you Happy Birthday brooo 😘<br><br>
+      Once again, Happy Birthday brooo 😘<br><br>
       — Your Machi 💫
     </p>
   </div>
 
-   <script src="script.js"></script>
+  <script>
+  function showWish() {
+    document.getElementById("wishMessage").style.display = "block";
+  }
+
+  // Floating hearts animation
+  for (let i = 0; i < 30; i++) {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.style.left = `${Math.random() * 100}%`;
+    heart.style.bottom = "-50px";
+    heart.style.setProperty('--i', Math.random());
+    heart.style.animationDuration = `${5 + Math.random() * 5}s`;
+    heart.style.opacity = Math.random();
+    document.body.appendChild(heart);
+  }
+</script>
+
 
 </body>
 </html>
