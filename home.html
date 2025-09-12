@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Instagram Clone</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #fafafa;
+      color: #262626;
+    }
+
+    .container {
+      width: 90%;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      padding-top: 20px;
+    }
+
+    .navbar {
+      width: 100%;
+      background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045);
+      border-bottom: 1px solid #dbdbdb;
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .navbar .logo img {
+      height: 35px;
+      border-radius: 5px;
+      transition: transform 0.2s;
+    }
+
+    .navbar .logo img:hover {
+      transform: scale(1.05);
+    }
+
+    .searchbar {
+      display: flex;
+      align-items: center;
+      border: 1px solid #dbdbdb;
+      border-radius: 10px;
+      padding: 5px 10px;
+      background-color: white;
+    }
+
+    .searchbar input {
+      border: none;
+      outline: none;
+      width: 200px;
+      font-size: 14px;
+    }
+
+    .nav-links ul {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-links ul li {
+      margin-left: 20px;
+    }
+
+    .nav-links ul li a {
+      text-decoration: none;
+      color: white;
+      font-size: 22px;
+    }
+
+    .profile img {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+    }
+
+    .card {
+      background-color: white;
+      border: 1px solid #dbdbdb;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px;
+      align-items: center;
+    }
+
+    .userDetails {
+      display: flex;
+      align-items: center;
+    }
+
+    .userDetails img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid #ff8501;
+    }
+
+    .userDetails h3 {
+      font-size: 14px;
+      margin-left: 10px;
+    }
+
+    .imgBx img {
+      width: 100%;
+      max-height: 500px;
+      object-fit: cover;
+      border-bottom: 1px solid #dbdbdb;
+    }
+
+    .bottom {
+      padding: 10px 15px;
+    }
+
+    .actionBtns {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .likes, .message, .comments, .postTime {
+      margin: 5px 0;
+      font-size: 14px;
+    }
+
+    .addComments {
+      display: flex;
+      align-items: center;
+      border-top: 1px solid #efefef;
+      padding: 10px 0;
+    }
+
+    .addComments input {
+      border: none;
+      outline: none;
+      width: 80%;
+      padding: 8px 10px;
+      border-radius: 20px;
+      background-color: #fafafa;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      color: #8e8e8e;
+      font-size: 12px;
+    }
+
+    .footer-section {
+      margin: 0 5px;
+      color: #8e8e8e;
+      text-decoration: none;
+    }
+
+    /* ✅ Mobile Responsive */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        width: 100%;
+        padding: 10px;
+      }
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .searchbar {
+        width: 100%;
+        margin: 10px 0;
+      }
+      .searchbar input {
+        width: 100%;
+      }
+      .nav-links ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .nav-links ul li {
+        margin: 10px;
+      }
+      .card {
+        width: 100%;
+      }
+      .userDetails img {
+        width: 40px;
+        height: 40px;
+      }
+      .imgBx img {
+        max-height: 300px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-links ul li a {
+        font-size: 18px;
+      }
+      .userDetails h3 {
+        font-size: 12px;
+      }
+      .likes, .message, .comments, .postTime {
+        font-size: 12px;
+      }
+      .addComments input {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar">
+      <div class="container">
+        <div class="logo">
+          <a href="#"><img src="https://images.pexels.com/photos/33816285/pexels-photo-33816285.jpeg" alt="Logo"></a>
+        </div>
+        <div class="searchbar">
+          <input type="text" placeholder="Search">
+        </div>
+        <div class="nav-links">
+          <ul>
+            <li><a href="#"><i class="fas fa-home"></i></a></li>
+            <li><a href="#"><i class="fab fa-facebook-messenger"></i></a></li>
+            <li><a href="#"><i class="far fa-compass"></i></a></li>
+            <li><a href="#"><i class="far fa-heart"></i></a></li>
+            <li>
+              <div class="profile">
+                <img src="https://images.pexels.com/photos/33816285/pexels-photo-33816285.jpeg" alt="Profile">
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="col-9">
+
+        <!-- Feed Post -->
+        <div class="card">
+          <div class="top">
+            <div class="userDetails">
+              <img src="https://images.pexels.com/photos/33816285/pexels-photo-33816285.jpeg" alt="Profile">
+              <h3>username<br><span>Location</span></h3>
+            </div>
+            <span><i class="fas fa-ellipsis-h"></i></span>
+          </div>
+          <div class="imgBx"><img src="https://images.pexels.com/photos/33816285/pexels-photo-33816285.jpeg" alt="Post Image"></div>
+          <div class="bottom">
+            <div class="actionBtns">
+              <div class="left">
+                <i class="far fa-heart"></i>
+                <i class="far fa-comment"></i>
+                <i class="far fa-paper-plane"></i>
+              </div>
+              <div class="right">
+                <i class="far fa-bookmark"></i>
+              </div>
+            </div>
+            <p class="likes">100 likes</p>
+            <p class="message"><b>username</b> This is a sample caption with some text to describe the image content.</p>
+            <h4 class="comments">View all 20 comments</h4>
+            <h5 class="postTime">2 hours ago</h5>
+            <div class="addComments">
+              <div class="reaction"><i class="far fa-smile"></i></div>
+              <input type="text" placeholder="Add a comment...">
+              <a href="#">Post</a>
+            </div>
+          </div>
+        </div>
+
+         <div class="card">
+          <div class="top">
+            <div class="userDetails">
+              <img src="https://images.pexels.com/photos/33816285/pexels-photo-33816285.jpeg" alt="Profile">
+              <h3>username<br><span>Location</span></h3>
+            </div>
+            <span><i class="fas fa-ellipsis-h"></i></span>
+          </div>
+          <div class="imgBx"><img src="https://images.pexels.com/photos/33816285/pexels-photo-33816285.jpeg" alt="Post Image"></div>
+          <div class="bottom">
+            <div class="actionBtns">
+              <div class="left">
+                <i class="far fa-heart"></i>
+                <i class="far fa-comment"></i>
+                <i class="far fa-paper-plane"></i>
+              </div>
+              <div class="right">
+                <i class="far fa-bookmark"></i>
+              </div>
+            </div>
+            <p class="likes">100 likes</p>
+            <p class="message"><b>username</b> This is a sample caption with some text to describe the image content.</p>
+            <h4 class="comments">View all 20 comments</h4>
+            <h5 class="postTime">2 hours ago</h5>
+            <div class="addComments">
+              <div class="reaction"><i class="far fa-smile"></i></div>
+              <input type="text" placeholder="Add a comment...">
+              <a href="#">Post</a>
+            </div>
+          </div>
+        </div>
+
+         <div class="card">
+          <div class="top">
+            <div class="userDetails">
+              <img src="https://images.pexels.com/photos/33816285/pexels-photo-33816285.jpeg" alt="Profile">
+              <h3>username<br><span>Location</span></h3>
+            </div>
+            <span><i class="fas fa-ellipsis-h"></i></span>
+          </div>
+          <div class="imgBx"><img src="https://images.pexels.com/photos/33816285/pexels-photo-33816285.jpeg" alt="Post Image"></div>
+          <div class="bottom">
+            <div class="actionBtns">
+              <div class="left">
+                <i class="far fa-heart"></i>
+                <i class="far fa-comment"></i>
+                <i class="far fa-paper-plane"></i>
+              </div>
+              <div class="right">
+                <i class="far fa-bookmark"></i>
+              </div>
+            </div>
+            <p class="likes">100 likes</p>
+            <p class="message"><b>username</b> This is a sample caption with some text to describe the image content.</p>
+            <h4 class="comments">View all 20 comments</h4>
+            <h5 class="postTime">2 hours ago</h5>
+            <div class="addComments">
+              <div class="reaction"><i class="far fa-smile"></i></div>
+              <input type="text" placeholder="Add a comment...">
+              <a href="#">Post</a>
+            </div>
+          </div>
+        </div>
+
+         <div class="card">
+          <div class="top">
+            <div class="userDetails">
+              <img src="https://images.pexels.com/photos/33816285/pexels-photo-33816285.jpeg" alt="Profile">
+              <h3>username<br><span>Location</span></h3>
+            </div>
+            <span><i class="fas fa-ellipsis-h"></i></span>
+          </div>
+          <div class="imgBx"><img src="https://images.pexels.com/photos/33816285/pexels-photo-33816285.jpeg" alt="Post Image"></div>
+          <div class="bottom">
+            <div class="actionBtns">
+              <div class="left">
+                <i class="far fa-heart"></i>
+                <i class="far fa-comment"></i>
+                <i class="far fa-paper-plane"></i>
+              </div>
+              <div class="right">
+                <i class="far fa-bookmark"></i>
+              </div>
+            </div>
+            <p class="likes">100 likes</p>
+            <p class="message"><b>username</b> This is a sample caption with some text to describe the image content.</p>
+            <h4 class="comments">View all 20 comments</h4>
+            <h5 class="postTime">2 hours ago</h5>
+            <div class="addComments">
+              <div class="reaction"><i class="far fa-smile"></i></div>
+              <input type="text" placeholder="Add a comment...">
+              <a href="#">Post</a>
+            </div>
+          </div>
+        </div>
+         <div class="card">
+          <div class="top">
+            <div class="userDetails">
+              <img src="https://images.pexels.com/photos/33816285/pexels-photo-33816285.jpeg" alt="Profile">
+              <h3>username<br><span>Location</span></h3>
+            </div>
+            <span><i class="fas fa-ellipsis-h"></i></span>
+          </div>
+          <div class="imgBx"><img src="https://images.pexels.com/photos/33816285/pexels-photo-33816285.jpeg" alt="Post Image"></div>
+          <div class="bottom">
+            <div class="actionBtns">
+              <div class="left">
+                <i class="far fa-heart"></i>
+                <i class="far fa-comment"></i>
+                <i class="far fa-paper-plane"></i>
+              </div>
+              <div class="right">
+                <i class="far fa-bookmark"></i>
+              </div>
+            </div>
+            <p class="likes">100 likes</p>
+            <p class="message"><b>username</b> This is a sample caption with some text to describe the image content.</p>
+            <h4 class="comments">View all 20 comments</h4>
+            <h5 class="postTime">2 hours ago</h5>
+            <div class="addComments">
+              <div class="reaction"><i class="far fa-smile"></i></div>
+              <input type="text" placeholder="Add a comment...">
+              <a href="#">Post</a>
+            </div>
+          </div>
+        </div>
+         <div class="card">
+          <div class="top">
+            <div class="userDetails">
+              <img src="https://images.pexels.com/photos/33816285/pexels-photo-33816285.jpeg" alt="Profile">
+              <h3>username<br><span>Location</span></h3>
+            </div>
+            <span><i class="fas fa-ellipsis-h"></i></span>
+          </div>
+          <div class="imgBx"><img src="https://images.pexels.com/photos/33816285/pexels-photo-33816285.jpeg" alt="Post Image"></div>
+          <div class="bottom">
+            <div class="actionBtns">
+              <div class="left">
+                <i class="far fa-heart"></i>
+                <i class="far fa-comment"></i>
+                <i class="far fa-paper-plane"></i>
+              </div>
+              <div class="right">
+                <i class="far fa-bookmark"></i>
+              </div>
+            </div>
+            <p class="likes">100 likes</p>
+            <p class="message"><b>username</b> This is a sample caption with some text to describe the image content.</p>
+            <h4 class="comments">View all 20 comments</h4>
+            <h5 class="postTime">2 hours ago</h5>
+            <div class="addComments">
+              <div class="reaction"><i class="far fa-smile"></i></div>
+              <input type="text" placeholder="Add a comment...">
+              <a href="#">Post</a>
+            </div>
+          </div>
+        </div>
+         <div class="card">
+          <div class="top">
+            <div class="userDetails">
+              <img src="https://images.pexels.com/photos/33816285/pexels-photo-33816285.jpeg" alt="Profile">
+              <h3>username<br><span>Location</span></h3>
+            </div>
+            <span><i class="fas fa-ellipsis-h"></i></span>
+          </div>
+          <div class="imgBx"><img src="https://images.pexels.com/photos/33816285/pexels-photo-33816285.jpeg" alt="Post Image"></div>
+          <div class="bottom">
+            <div class="actionBtns">
+              <div class="left">
+                <i class="far fa-heart"></i>
+                <i class="far fa-comment"></i>
+                <i class="far fa-paper-plane"></i>
+              </div>
+              <div class="right">
+                <i class="far fa-bookmark"></i>
+              </div>
+            </div>
+            <p class="likes">100 likes</p>
+            <p class="message"><b>username</b> This is a sample caption with some text to describe the image content.</p>
+            <h4 class="comments">View all 20 comments</h4>
+            <h5 class="postTime">2 hours ago</h5>
+            <div class="addComments">
+              <div class="reaction"><i class="far fa-smile"></i></div>
+              <input type="text" placeholder="Add a comment...">
+              <a href="#">Post</a>
+            </div>
+          </div>
+        </div>
+        
+
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <a class="footer-section" href="#">About</a>
+      <a class="footer-section" href="#">Help</a>
+      <a class="footer-section" href="#">API</a>
+      <a class="footer-section" href="#">Jobs</a>
+      <a class="footer-section" href="#">Privacy</a>
+      <a class="footer-section" href="#">Terms</a>
+      <a class="footer-section" href="#">Locations</a>
+      <br>
+      <a class="footer-section" href="#">Top Accounts</a>
+      <a class="footer-section" href="#">Hashtag</a>
+      <a class="footer-section" href="#">Language</a>
+      <br><br>
+      <span class="footer-section">&copy; 2025 INSTAGRAM FROM META</span>
+    </div>
+  </main>
+</body>
+</html>
