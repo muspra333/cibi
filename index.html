@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Register - Create Account</title>
     <style>
         * {
@@ -13,21 +13,21 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-
-            padding: 20px;
+            background: black;
             display: flex;
             justify-content: center;
             align-items: center;
+            min-height: 100vh;
+            padding: 20px;
         }
 
         .register-container {
             background: white;
             padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+          
             width: 100%;
-            max-width: 950px;
+            max-width: 450px;
             position: relative;
             overflow: hidden;
         }
@@ -39,12 +39,12 @@
             left: 0;
             right: 0;
             height: 5px;
-            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+           
         }
 
         .register-header {
             text-align: center;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
 
         .register-title {
@@ -60,7 +60,7 @@
         }
 
         .form-group {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .form-label {
@@ -122,7 +122,7 @@
         .login-link {
             text-align: center;
             margin-top: 15px;
-            padding-top: 25px;
+            padding-top: 20px;
             border-top: 1px solid #e1e5e9;
         }
 
@@ -138,26 +138,6 @@
             text-decoration: underline;
         }
 
-        .error-messages {
-            background: #fee;
-            border: 1px solid #fcc;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 10px;
-            font-size: 14px;
-            color: #c33;
-        }
-
-        .success-messages {
-            background: #efe;
-            border: 1px solid #cfc;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 10px;
-            font-size: 14px;
-            color: #363;
-        }
-
         .form-row {
             display: flex;
             gap: 15px;
@@ -165,22 +145,6 @@
 
         .form-row .form-group {
             flex: 1;
-        }
-
-        @media (max-width: 480px) {
-            .register-container {
-                padding: 30px 20px;
-                margin: 10px;
-            }
-
-            .form-row {
-                flex-direction: column;
-                gap: 0;
-            }
-
-            .register-title {
-                font-size: 24px;
-            }
         }
 
         .checkbox-group {
@@ -209,6 +173,18 @@
         .checkbox-group a:hover {
             text-decoration: underline;
         }
+
+        @media (max-width: 600px) {
+            .register-container {
+                padding: 20px;
+                width: 100%;
+                margin: 10px;
+            }
+
+            .form-row {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 <body>
@@ -218,8 +194,7 @@
             <p class="register-subtitle">Join us today and get started</p>
         </div>
 
-        <!-- Django form starts here -->
-
+        <form action="login.html" method="get">
             <div class="form-row">
                 <div class="form-group">
                     <label class="form-label" for="first_name">First Name</label>
@@ -229,7 +204,7 @@
                         name="first_name"
                         class="form-input"
                         placeholder="Enter first name"
-                        required
+                        
                     >
                 </div>
                 <div class="form-group">
@@ -240,7 +215,7 @@
                         name="last_name"
                         class="form-input"
                         placeholder="Enter last name"
-                        required
+                        
                     >
                 </div>
             </div>
@@ -253,7 +228,7 @@
                     name="username"
                     class="form-input"
                     placeholder="Choose a username"
-                    required
+                   
                 >
             </div>
 
@@ -265,7 +240,7 @@
                     name="email"
                     class="form-input"
                     placeholder="Enter your email"
-                    required
+                    
                 >
             </div>
 
@@ -277,7 +252,7 @@
                     name="password1"
                     class="form-input"
                     placeholder="Create a strong password"
-                    required
+                   
                 >
                 <div class="password-requirements">
                     Password must be at least 8 characters long and include letters and numbers.
@@ -292,25 +267,24 @@
                     name="password2"
                     class="form-input"
                     placeholder="Confirm your password"
-                    required
+                    
                 >
             </div>
 
             <div class="checkbox-group">
-                <input type="checkbox" id="terms" name="terms" required>
+                <input type="checkbox" id="terms" name="terms" >
                 <label for="terms">
                     I agree to the <a href="/terms/" target="_blank">Terms of Service</a> and
                     <a href="/privacy/" target="_blank">Privacy Policy</a>
                 </label>
             </div>
 
-            <button type="submit"  class="register-btn"><a href="login.html">Create Account</a></button>
+            <button type="submit" class="register-btn">Create Account</button>
         </form>
 
         <div class="login-link">
-            <p>Already have an account? <a href="">Sign in here</a></p>
+            <p>Already have an account? <a href="login.html">Sign in here</a></p>
         </div>
     </div>
 </body>
-
 </html>
