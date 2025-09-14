@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram - Notifications</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #fafafa;
+            color: #262626;
+        }
+
+        .container {
+            max-width: 935px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+        }
+
+        .header {
+            border-bottom: 1px solid #dbdbdb;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            font-weight: 400;
+        }
+
+        .back-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #262626;
+        }
+
+        .notifications-container {
+            padding: 20px;
+        }
+
+        .time-section {
+            margin-bottom: 30px;
+        }
+
+        .time-header {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #262626;
+        }
+
+        .notification {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+
+        .notification:hover {
+            background-color: #f8f8f8;
+        }
+
+        .notification.unread {
+            background-color: #f0f8ff;
+        }
+
+        .notification.unread::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #1877f2;
+            border-radius: 50%;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        .profile-pic {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            margin-right: 12px;
+            object-fit: cover;
+            border: 1px solid #dbdbdb;
+        }
+
+        .notification-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .notification-text {
+            flex: 1;
+        }
+
+        .username {
+            font-weight: 600;
+            color: #262626;
+        }
+
+        .action-text {
+            color: #8e8e8e;
+        }
+
+        .time-ago {
+            color: #8e8e8e;
+            font-size: 12px;
+            margin-left: 12px;
+            white-space: nowrap;
+        }
+
+        .post-thumbnail {
+            width: 44px;
+            height: 44px;
+            margin-left: 12px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .follow-btn {
+            background: #0095f6;
+            color: white;
+            border: none;
+            padding: 6px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-left: 12px;
+        }
+
+        .follow-btn:hover {
+            background: #1877f2;
+        }
+
+        .follow-btn.following {
+            background: transparent;
+            color: #262626;
+            border: 1px solid #dbdbdb;
+        }
+
+        .follow-btn.following:hover {
+            background: #f5f5f5;
+        }
+
+        .story-ring {
+            padding: 2px;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            border-radius: 50%;
+        }
+
+        .story-ring .profile-pic {
+            border: 2px solid white;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                max-width: 100%;
+            }
+            
+            .header {
+                padding: 15px;
+            }
+            
+            .notifications-container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <button class="back-btn" onclick="goBack()">←</button>
+            <h1>Activity</h1>
+            <div></div>
+        </div>
+
+        <div class="notifications-container">
+            <div class="time-section">
+                <div class="time-header">Today</div>
+                
+                <div class="notification unread">
+                    <div class="story-ring">
+                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop&crop=face" alt="Profile" class="profile-pic">
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-text">
+                            <span class="username">john_doe</span>
+                            <span class="action-text"> liked your photo.</span>
+                        </div>
+                        <div class="time-ago">2h</div>
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=100&h=100&fit=crop" alt="Post" class="post-thumbnail">
+                    </div>
+                </div>
+
+                <div class="notification unread">
+                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b789?w=100&h=100&fit=crop&crop=face" alt="Profile" class="profile-pic">
+                    <div class="notification-content">
+                        <div class="notification-text">
+                            <span class="username">sarah_wilson</span>
+                            <span class="action-text"> started following you.</span>
+                        </div>
+                        <div class="time-ago">3h</div>
+                        <button class="follow-btn" onclick="toggleFollow(this)">Follow</button>
+                    </div>
+                </div>
+
+                <div class="notification">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Profile" class="profile-pic">
+                    <div class="notification-content">
+                        <div class="notification-text">
+                            <span class="username">mike_photo</span>
+                            <span class="action-text"> commented: "Amazing shot! 🔥"</span>
+                        </div>
+                        <div class="time-ago">5h</div>
+                        <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=100&h=100&fit=crop" alt="Post" class="post-thumbnail">
+                    </div>
+                </div>
+
+                <div class="notification">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" alt="Profile" class="profile-pic">
+                    <div class="notification-content">
+                        <div class="notification-text">
+                            <span class="username">emma_travels</span>
+                            <span class="action-text"> liked your photo.</span>
+                        </div>
+                        <div class="time-ago">6h</div>
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=100&h=100&fit=crop" alt="Post" class="post-thumbnail">
+                    </div>
+                </div>
+            </div>
+
+            <div class="time-section">
+                <div class="time-header">This Week</div>
+                
+                <div class="notification">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" alt="Profile" class="profile-pic">
+                    <div class="notification-content">
+                        <div class="notification-text">
+                            <span class="username">alex_runner</span>
+                            <span class="action-text"> started following you.</span>
+                        </div>
+                        <div class="time-ago">2d</div>
+                        <button class="follow-btn following" onclick="toggleFollow(this)">Following</button>
+                    </div>
+                </div>
+
+                <div class="notification">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face" alt="Profile" class="profile-pic">
+                    <div class="notification-content">
+                        <div class="notification-text">
+                            <span class="username">david_chef</span>
+                            <span class="action-text"> liked your photo.</span>
+                        </div>
+                        <div class="time-ago">3d</div>
+                        <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=100&h=100&fit=crop" alt="Post" class="post-thumbnail">
+                    </div>
+                </div>
+
+                <div class="notification">
+                    <img src="https://images.unsplash.com/photo-1463453091185-61582044d556?w=100&h=100&fit=crop&crop=face" alt="Profile" class="profile-pic">
+                    <div class="notification-content">
+                        <div class="notification-text">
+                            <span class="username">lisa_art</span>
+                            <span class="action-text"> mentioned you in a comment: "@your_username check this out!"</span>
+                        </div>
+                        <div class="time-ago">4d</div>
+                        <img src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=100&h=100&fit=crop" alt="Post" class="post-thumbnail">
+                    </div>
+                </div>
+
+                <div class="notification">
+                    <img src="https://images.unsplash.com/photo-1502764613149-7f1d229e230f?w=100&h=100&fit=crop&crop=face" alt="Profile" class="profile-pic">
+                    <div class="notification-content">
+                        <div class="notification-text">
+                            <span class="username">jenny_fitness</span>
+                            <span class="action-text"> liked 3 of your photos.</span>
+                        </div>
+                        <div class="time-ago">5d</div>
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=100&h=100&fit=crop" alt="Post" class="post-thumbnail">
+                    </div>
+                </div>
+            </div>
+
+            <div class="time-section">
+                <div class="time-header">Earlier</div>
+                
+                <div class="notification">
+                    <img src="https://images.unsplash.com/photo-1507591064344-4c6ce005b128?w=100&h=100&fit=crop&crop=face" alt="Profile" class="profile-pic">
+                    <div class="notification-content">
+                        <div class="notification-text">
+                            <span class="username">tom_music</span>
+                            <span class="action-text"> started following you.</span>
+                        </div>
+                        <div class="time-ago">1w</div>
+                        <button class="follow-btn" onclick="toggleFollow(this)">Follow</button>
+                    </div>
+                </div>
+
+                <div class="notification">
+                    <img src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=100&h=100&fit=crop&crop=face" alt="Profile" class="profile-pic">
+                    <div class="notification-content">
+                        <div class="notification-text">
+                            <span class="username">anna_design</span>
+                            <span class="action-text"> commented: "Love your style!"</span>
+                        </div>
+                        <div class="time-ago">2w</div>
+                        <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=100&h=100&fit=crop" alt="Post" class="post-thumbnail">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function goBack() {
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                alert('This would go back to the main Instagram page');
+            }
+        }
+
+        function toggleFollow(button) {
+            if (button.classList.contains('following')) {
+                button.textContent = 'Follow';
+                button.classList.remove('following');
+            } else {
+                button.textContent = 'Following';
+                button.classList.add('following');
+            }
+        }
+
+        // Mark notifications as read when clicked
+        document.querySelectorAll('.notification').forEach(notification => {
+            notification.addEventListener('click', function() {
+                this.classList.remove('unread');
+            });
+        });
+
+        // Add some interactive animations
+        document.querySelectorAll('.notification').forEach(notification => {
+            notification.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateX(2px)';
+            });
+            
+            notification.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateX(0)';
+            });
+        });
+    </script>
+</body>
+</html>

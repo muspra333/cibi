@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Instagram Clone</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background-color: #fafafa;
+      color: #262626;
+    }
+    .navbar {
+      width: 100%;
+      background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045);
+      border-bottom: 1px solid #dbdbdb;
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .card {
+      background-color: white;
+      border: 1px solid #dbdbdb;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .imgBx img {
+      width: 100%;
+      max-height: 500px;
+      object-fit: cover;
+      border-bottom: 1px solid #dbdbdb;
+    }
+    /* Add other styles as needed */
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar">
+      <div class="container d-flex justify-content-between align-items-center">
+        <div class="logo">
+          <a href="#"><img src="https://images.pexels.com/photos/33816285/pexels-photo-33816285.jpeg" alt="Logo" height="35"></a>
+        </div>
+        <div class="searchbar border rounded px-2 bg-white">
+          <input type="text" placeholder="Search" class="border-0 outline-0" style="width:200px;">
+        </div>
+        <div class="nav-links">
+          <ul class="list-unstyled d-flex mb-0">
+            <li class="ms-3"><a href="#"><i class="fas fa-home text-white fs-5"></i></a></li>
+            <li class="ms-3"><a href="#"><i class="fab fa-facebook-messenger text-white fs-5"></i></a></li>
+            <li class="ms-3"><a href="#"><i class="far fa-compass text-white fs-5"></i></a></li>
+            <li class="ms-3"><a href="#"><i class="far fa-heart text-white fs-5"></i></a></li>
+            <li class="ms-3"><a href="#"><img src="https://images.pexels.com/photos/33816285/pexels-photo-33816285.jpeg" alt="Profile" class="rounded-circle" width="35"></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Feed Posts -->
+  <main class="py-4">
+    <div class="container d-flex flex-column align-items-center">
+      
+      <!-- Single Post Card -->
+      <div class="card mb-4" style="width: 100%; max-width: 500px;">
+        <div class="top d-flex justify-content-between align-items-center p-3">
+          <div class="d-flex align-items-center">
+            <img src="https://images.pexels.com/photos/33816285/pexels-photo-33816285.jpeg" alt="Profile" width="50" height="50" class="rounded-circle border border-2 border-warning">
+            <div class="ms-2">
+              <h6 class="mb-0">username</h6>
+              <small class="text-muted">Location</small>
+            </div>
+          </div>
+          <i class="fas fa-ellipsis-h"></i>
+        </div>
+        <div class="imgBx">
+          <img src="https://images.pexels.com/photos/33816285/pexels-photo-33816285.jpeg" alt="Post Image">
+        </div>
+        <div class="bottom p-3">
+          <div class="d-flex justify-content-between mb-2">
+            <div>
+              <i class="far fa-heart me-3 cursor-pointer"></i>
+              <i class="far fa-comment me-3 cursor-pointer"></i>
+              <i class="far fa-paper-plane cursor-pointer"></i>
+            </div>
+            <i class="far fa-bookmark cursor-pointer"></i>
+          </div>
+          <p class="mb-1"><strong>username</strong> This is a sample caption.</p>
+          <small class="text-muted">View all 20 comments</small><br>
+          <small class="text-muted">2 hours ago</small>
+          <div class="addComments mt-2 d-flex align-items-center border-top pt-2">
+            <i class="far fa-smile me-2 text-warning"></i>
+            <input type="text" placeholder="Add a comment..." class="form-control form-control-sm">
+            <a href="#" class="text-primary fw-bold ms-2">Post</a>
+          </div>
+        </div>
+      </div>
+
+        <!-- Single Post Card -->
+      <div class="card mb-4" style="width: 100%; max-width: 500px;">
+        <div class="top d-flex justify-content-between align-items-center p-3">
+          <div class="d-flex align-items-center">
+            <img src="https://images.pexels.com/photos/33816285/pexels-photo-33816285.jpeg" alt="Profile" width="50" height="50" class="rounded-circle border border-2 border-warning">
+            <div class="ms-2">
+              <h6 class="mb-0">username</h6>
+              <small class="text-muted">Location</small>
+            </div>
+          </div>
+          <i class="fas fa-ellipsis-h"></i>
+        </div>
+        <div class="imgBx">
+          <img src="https://images.pexels.com/photos/33816285/pexels-photo-33816285.jpeg" alt="Post Image">
+        </div>
+        <div class="bottom p-3">
+          <div class="d-flex justify-content-between mb-2">
+            <div>
+              <i class="far fa-heart me-3 cursor-pointer"></i>
+              <i class="far fa-comment me-3 cursor-pointer"></i>
+              <i class="far fa-paper-plane cursor-pointer"></i>
+            </div>
+            <i class="far fa-bookmark cursor-pointer"></i>
+          </div>
+          <p class="mb-1"><strong>username</strong> This is a sample caption.</p>
+          <small class="text-muted">View all 20 comments</small><br>
+          <small class="text-muted">2 hours ago</small>
+          <div class="addComments mt-2 d-flex align-items-center border-top pt-2">
+            <i class="far fa-smile me-2 text-warning"></i>
+            <input type="text" placeholder="Add a comment..." class="form-control form-control-sm">
+            <a href="#" class="text-primary fw-bold ms-2">Post</a>
+          </div>
+        </div>
+      </div>
+
+        <!-- Single Post Card -->
+      <div class="card mb-4" style="width: 100%; max-width: 500px;">
+        <div class="top d-flex justify-content-between align-items-center p-3">
+          <div class="d-flex align-items-center">
+            <img src="https://images.pexels.com/photos/33816285/pexels-photo-33816285.jpeg" alt="Profile" width="50" height="50" class="rounded-circle border border-2 border-warning">
+            <div class="ms-2">
+              <h6 class="mb-0">username</h6>
+              <small class="text-muted">Location</small>
+            </div>
+          </div>
+          <i class="fas fa-ellipsis-h"></i>
+        </div>
+        <div class="imgBx">
+          <img src="https://images.pexels.com/photos/33816285/pexels-photo-33816285.jpeg" alt="Post Image">
+        </div>
+        <div class="bottom p-3">
+          <div class="d-flex justify-content-between mb-2">
+            <div>
+              <i class="far fa-heart me-3 cursor-pointer"></i>
+              <i class="far fa-comment me-3 cursor-pointer"></i>
+              <i class="far fa-paper-plane cursor-pointer"></i>
+            </div>
+            <i class="far fa-bookmark cursor-pointer"></i>
+          </div>
+          <p class="mb-1"><strong>username</strong> This is a sample caption.</p>
+          <small class="text-muted">View all 20 comments</small><br>
+          <small class="text-muted">2 hours ago</small>
+          <div class="addComments mt-2 d-flex align-items-center border-top pt-2">
+            <i class="far fa-smile me-2 text-warning"></i>
+            <input type="text" placeholder="Add a comment..." class="form-control form-control-sm">
+            <a href="#" class="text-primary fw-bold ms-2">Post</a>
+          </div>
+        </div>
+      </div>
+
+
+        <!-- Single Post Card -->
+      <div class="card mb-4" style="width: 100%; max-width: 500px;">
+        <div class="top d-flex justify-content-between align-items-center p-3">
+          <div class="d-flex align-items-center">
+            <img src="https://images.pexels.com/photos/33816285/pexels-photo-33816285.jpeg" alt="Profile" width="50" height="50" class="rounded-circle border border-2 border-warning">
+            <div class="ms-2">
+              <h6 class="mb-0">username</h6>
+              <small class="text-muted">Location</small>
+            </div>
+          </div>
+          <i class="fas fa-ellipsis-h"></i>
+        </div>
+        <div class="imgBx">
+          <img src="https://images.pexels.com/photos/33816285/pexels-photo-33816285.jpeg" alt="Post Image">
+        </div>
+        <div class="bottom p-3">
+          <div class="d-flex justify-content-between mb-2">
+            <div>
+              <i class="far fa-heart me-3 cursor-pointer"></i>
+              <i class="far fa-comment me-3 cursor-pointer"></i>
+              <i class="far fa-paper-plane cursor-pointer"></i>
+            </div>
+            <i class="far fa-bookmark cursor-pointer"></i>
+          </div>
+          <p class="mb-1"><strong>username</strong> This is a sample caption.</p>
+          <small class="text-muted">View all 20 comments</small><br>
+          <small class="text-muted">2 hours ago</small>
+          <div class="addComments mt-2 d-flex align-items-center border-top pt-2">
+            <i class="far fa-smile me-2 text-warning"></i>
+            <input type="text" placeholder="Add a comment..." class="form-control form-control-sm">
+            <a href="#" class="text-primary fw-bold ms-2">Post</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Duplicate or loop other cards as needed -->
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center py-4 text-muted small">
+    <a href="#" class="text-muted text-decoration-none mx-1">About</a>
+    <a href="#" class="text-muted text-decoration-none mx-1">Help</a>
+    <a href="#" class="text-muted text-decoration-none mx-1">API</a>
+    <a href="#" class="text-muted text-decoration-none mx-1">Jobs</a>
+    <a href="#" class="text-muted text-decoration-none mx-1">Privacy</a>
+    <a href="#" class="text-muted text-decoration-none mx-1">Terms</a>
+    <a href="#" class="text-muted text-decoration-none mx-1">Locations</a>
+    <br>
+    <a href="#" class="text-muted text-decoration-none mx-1">Top Accounts</a>
+    <a href="#" class="text-muted text-decoration-none mx-1">Hashtag</a>
+    <a href="#" class="text-muted text-decoration-none mx-1">Language</a>
+    <br><br>
+    &copy; 2025 INSTAGRAM FROM META
+  </footer>
+
+</body>
+</html>
